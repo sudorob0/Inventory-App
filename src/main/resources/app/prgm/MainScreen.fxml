@@ -56,17 +56,17 @@
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font></Label>
-                <TextField fx:id="partSearchBar" maxWidth="200.0" minWidth="144.0" opacity="0.5" prefHeight="25.0" prefWidth="144.0" promptText="Search by Part ID or Name" text="Search by Part ID or Name" StackPane.alignment="TOP_RIGHT">
+                <TextField fx:id="partSearchBar" maxWidth="200.0" minWidth="144.0" onAction="#searchParts" opacity="0.5" prefHeight="25.0" prefWidth="144.0" promptText="Search by Part ID or Name" text="Search by Part ID or Name" StackPane.alignment="TOP_RIGHT">
                     <StackPane.margin>
                         <Insets right="75.0" top="5.0" />
                     </StackPane.margin>
                 </TextField>
-                <Button fx:id="partDelete" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partDelete" mnemonicParsing="false" onAction="#deletePart" prefHeight="25.0" prefWidth="56.0" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="60.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="partModForm" mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partModForm" mnemonicParsing="false" onAction="#toModifyPartScreen" prefHeight="25.0" prefWidth="57.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="135.0" />
                     </StackPane.margin>
@@ -79,7 +79,7 @@
             </children></StackPane>
         <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <Button fx:id="exit" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Exit" StackPane.alignment="CENTER_RIGHT">
+                <Button fx:id="exit" mnemonicParsing="false" onAction="#exitApp" prefHeight="25.0" prefWidth="40.0" text="Exit" StackPane.alignment="CENTER_RIGHT">
                     <StackPane.margin>
                         <Insets right="50.0" />
                     </StackPane.margin>
@@ -109,22 +109,22 @@
                         <Font name="Arial" size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="productSearchBar" maxWidth="200.0" minWidth="124.0" prefHeight="25.0" prefWidth="124.0" promptText="Search by Product ID or Name" StackPane.alignment="TOP_RIGHT">
+                <TextField fx:id="productSearchBar" maxWidth="200.0" minWidth="124.0" onAction="#searchProducts" prefHeight="25.0" prefWidth="124.0" promptText="Search by Product ID or Name" StackPane.alignment="TOP_RIGHT">
                     <StackPane.margin>
                         <Insets right="75.0" top="5.0" />
                     </StackPane.margin>
                 </TextField>
-                <Button fx:id="prodAdd" mnemonicParsing="false" text="Add" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="productAdd" mnemonicParsing="false" onAction="#toAddProductScreen" text="Add" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="200.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="prodDelete" mnemonicParsing="false" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="productDelete" mnemonicParsing="false" onAction="#deleteProduct" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="60.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="prodModify" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="productModify" mnemonicParsing="false" onAction="#toModifyProductScreen" prefHeight="26.0" prefWidth="58.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="135.0" />
                     </StackPane.margin>

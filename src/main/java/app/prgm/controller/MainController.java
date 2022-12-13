@@ -21,8 +21,14 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void searchParts(){}
 
-    public void toAddPartForm(ActionEvent actionEvent) throws IOException {
+    public void toModifyPartScreen(){}
+
+    public void deletePart(){}
+
+    public void toAddProductScreen(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -31,4 +37,13 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void searchProducts(){}
+
+    public void toModifyProductScreen(){}
+
+    public void deleteProduct(){}
+
+    public void exitApp(){}
+
 }
