@@ -21,9 +21,12 @@ public class AddPartController implements Initializable {
     public void toMain(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 300, 600);
-        stage.setTitle("Add Part");
+        Scene scene = new Scene(root, 999, 500);
+        stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
     }
+    public void inHouseSelected(){}
+
+    public void outSourcedSelected(){}
 }

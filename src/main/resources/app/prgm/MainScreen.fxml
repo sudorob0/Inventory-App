@@ -71,7 +71,7 @@
                         <Insets bottom="10.0" right="135.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="partAdd" mnemonicParsing="false" text="Add" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partAdd" mnemonicParsing="false" onAction="#toAddPartScreen" text="Add" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="200.0" />
                     </StackPane.margin>

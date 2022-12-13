@@ -18,15 +18,15 @@
         <Label layoutX="39.0" layoutY="129.0" text="ID" />
         <TextField fx:id="idField" disable="true" editable="false" layoutX="106.0" layoutY="125.0" prefWidth="150.0" promptText="Auto Gen - Disabled" />
         <Label layoutX="35.0" layoutY="169.0" text="Name" />
-        <TextField fx:id="nameField" layoutX="106.0" layoutY="165.0" promptText="Product name" />
+        <TextField fx:id="nameField" layoutX="106.0" layoutY="165.0" prefHeight="26.0" prefWidth="150.0" promptText="Product name" />
         <Label layoutX="35.0" layoutY="209.0" text="Inventory" />
-        <TextField fx:id="stockField" layoutX="106.0" layoutY="205.0" prefWidth="100.0" promptText="Amount in stock" />
+        <TextField fx:id="stockField" layoutX="106.0" layoutY="205.0" prefHeight="26.0" prefWidth="150.0" promptText="Amount in stock" />
         <Label layoutX="37.0" layoutY="249.0" text="Price" />
-        <TextField fx:id="priceField" layoutX="106.0" layoutY="245.0" prefWidth="100.0" promptText="00.00" />
-        <Label layoutX="33.0" layoutY="324.0" text="Max" />
-        <TextField fx:id="maxField" layoutX="106.0" layoutY="329.0" prefWidth="100.0" promptText="Maximum in stock" />
-        <Label layoutX="35.0" layoutY="286.0" text="Min" />
-        <TextField fx:id="minField" layoutX="106.0" layoutY="291.0" prefWidth="100.0" promptText="Minimum in stoc" />
+        <TextField fx:id="priceField" layoutX="106.0" layoutY="245.0" prefHeight="26.0" prefWidth="150.0" promptText="00.00" />
+        <Label layoutX="33.0" layoutY="327.0" text="Max" />
+        <TextField fx:id="maxField" layoutX="106.0" layoutY="322.0" prefHeight="26.0" prefWidth="150.0" promptText="Maximum in stock" />
+        <Label layoutX="35.0" layoutY="288.0" text="Min" />
+        <TextField fx:id="minField" layoutX="106.0" layoutY="283.0" prefHeight="26.0" prefWidth="150.0" promptText="Minimum in stock" />
         <Button fx:id="addAssocPart" layoutX="699.0" layoutY="254.0" mnemonicParsing="false" onAction="#addButtonSelected" text="Add" />
         <Button fx:id="removeAssocPart" layoutX="583.0" layoutY="498.0" mnemonicParsing="false" onAction="#removeSelected" text="Remove Associated Part" />
         <Button fx:id="saveButton" layoutX="611.0" layoutY="538.0" mnemonicParsing="false" onAction="#saveSelected" text="Save" />
