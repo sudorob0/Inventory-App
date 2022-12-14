@@ -53,8 +53,8 @@
          </toggleGroup></RadioButton>
     <RadioButton fx:id="outSourced" mnemonicParsing="false" onAction="#outSourcedSelected" text="Outsourced" toggleGroup="$addPartGroup" GridPane.columnIndex="2" GridPane.rowIndex="1" />
     <TextField prefHeight="25.0" prefWidth="133.0" promptText="Max stock" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-    <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="9" GridPane.rowSpan="2147483647" />
+    <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonSelected" prefHeight="25.0" prefWidth="58.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonSelected" text="Cancel" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="9" GridPane.rowSpan="2147483647" />
     <Label layoutX="32.0" layoutY="257.0" text="Max" GridPane.columnIndex="1" GridPane.rowIndex="7" />
   </children>
 </GridPane>

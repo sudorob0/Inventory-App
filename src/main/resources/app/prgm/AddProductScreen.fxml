@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddProductFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.prgm.controller.AddProductController">
     <children>
         <Label layoutX="32.0" layoutY="30.0" text="Add Product">
             <font>
@@ -28,9 +28,9 @@
         <Label layoutX="35.0" layoutY="288.0" text="Min" />
         <TextField fx:id="minField" layoutX="106.0" layoutY="283.0" prefHeight="26.0" prefWidth="150.0" promptText="Minimum in stock" />
         <Button fx:id="addAssocPart" layoutX="699.0" layoutY="254.0" mnemonicParsing="false" onAction="#addButtonSelected" text="Add" />
-        <Button fx:id="removeAssocPart" layoutX="583.0" layoutY="498.0" mnemonicParsing="false" onAction="#removeSelected" text="Remove Associated Part" />
-        <Button fx:id="saveButton" layoutX="611.0" layoutY="538.0" mnemonicParsing="false" onAction="#saveSelected" text="Save" />
-        <Button fx:id="cancelButton" layoutX="677.0" layoutY="538.0" mnemonicParsing="false" onAction="#cancelSelected" text="Cancel" />
+        <Button fx:id="removeAssocPart" layoutX="583.0" layoutY="498.0" mnemonicParsing="false" onAction="#removeButtonSelected" text="Remove Associated Part" />
+        <Button fx:id="saveButton" layoutX="611.0" layoutY="538.0" mnemonicParsing="false" onAction="#saveButtonSelected" text="Save" />
+        <Button fx:id="cancelButton" layoutX="677.0" layoutY="538.0" mnemonicParsing="false" onAction="#cancelButtonSelected" text="Cancel" />
         <TextField fx:id="partSearchBar" layoutX="558.0" layoutY="18.0" onAction="#searchParts" prefHeight="25.0" prefWidth="182.0" promptText="Search by Part ID or Name" />
         <TableView fx:id="partToAdd" layoutX="284.0" layoutY="50.0" prefHeight="200.0" prefWidth="456.0">
             <columns>

@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="526026a7-9e2d-4c9d-94d9-dfbbee23acbd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/prgm/controller/AddProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/prgm/controller/ModifyPartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/prgm/controller/ModifyProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/prgm/controller/AddPartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/prgm/controller/AddPartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/prgm/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/prgm/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/prgm/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/prgm/MainScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/prgm/AddPartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/prgm/AddPartScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/prgm/AddProductScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/prgm/AddProductScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/prgm/ModifyPartScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/prgm/ModifyPartScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/prgm/ModifyProductScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/prgm/ModifyProductScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +60,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/app/prgm/controller" />
+      <recent name="$PROJECT_DIR$/src/main/resources/app/prgm" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.prgm.main.Main" />
@@ -77,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670901209179</updated>
       <workItem from="1670901210607" duration="2020000" />
-      <workItem from="1670903997972" duration="9035000" />
+      <workItem from="1670903997972" duration="16753000" />
     </task>
     <servers />
   </component>

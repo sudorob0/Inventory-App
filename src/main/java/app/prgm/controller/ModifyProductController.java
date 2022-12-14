@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddPartController implements Initializable {
+public class ModifyProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -26,11 +26,14 @@ public class AddPartController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void inHouseSelected(){}
+    public void addButtonSelected(){}
 
-    public void outSourcedSelected(){}
+    public void removeButtonSelected(){}
 
     public void saveButtonSelected(){}
 
     public void cancelButtonSelected(){}
+
+    public void searchParts(){}
 }
+
