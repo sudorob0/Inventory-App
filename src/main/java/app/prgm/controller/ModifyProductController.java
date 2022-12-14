@@ -32,8 +32,14 @@ public class ModifyProductController implements Initializable {
 
     public void saveButtonSelected(){}
 
-    public void cancelButtonSelected(){}
-
+    public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 999, 500);
+        stage.setTitle("Inventory Management System");
+        stage.setScene(scene);
+        stage.show();
+    }
     public void searchParts(){}
 }
 

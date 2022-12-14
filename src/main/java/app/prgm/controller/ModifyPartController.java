@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -14,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
+    public Label inOrOutHouseText;
+    public TextField inOrOutHouseField;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -27,11 +31,24 @@ public class ModifyPartController implements Initializable {
         stage.show();
     }
 
-    public void inHouseSelected(){}
+    public void inHouseSelected(ActionEvent actionEvent) {
+        inOrOutHouseText.setText("Machine ID");
+        inOrOutHouseField.setPromptText("ID #");
+    }
 
-    public void outSourcedSelected(){}
+    public void outSourcedSelected(ActionEvent actionEvent) {
+        inOrOutHouseText.setText("Company Name");
+        inOrOutHouseField.setPromptText("Company Name");
+    }
 
     public void saveButtonSelected(){}
 
-    public void cancelButtonSelected(){}
+    public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 999, 500);
+        stage.setTitle("Inventory Management System");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
