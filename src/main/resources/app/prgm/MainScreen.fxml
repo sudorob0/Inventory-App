@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.prgm.controller.MainController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.prgm.controller.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="400.0" prefWidth="502.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="544.0" minWidth="400.0" prefWidth="498.0" />
@@ -35,7 +35,7 @@
             </children></StackPane>
         <StackPane prefHeight="200.0" prefWidth="300.0" GridPane.rowIndex="1">
             <children>
-                <TableView fx:id="partTable" prefHeight="344.0" prefWidth="453.0">
+                <TableView fx:id="partsTable" prefHeight="344.0" prefWidth="453.0">
                     <columns>
                         <TableColumn fx:id="partID" prefWidth="72.0" text="Part ID" />
                         <TableColumn fx:id="partName" prefWidth="92.0" text="Part Name" />
@@ -87,7 +87,7 @@
             </children></StackPane>
         <StackPane prefHeight="543.0" prefWidth="888.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <TableView fx:id="prodTable" prefHeight="344.0" prefWidth="437.0">
+                <TableView fx:id="productsTable" prefHeight="344.0" prefWidth="437.0">
                     <columns>
                         <TableColumn fx:id="prodIDCol" editable="false" prefWidth="79.0" text="Product ID" />
                         <TableColumn fx:id="prodNameCol" prefWidth="97.0" text="Product Name" />

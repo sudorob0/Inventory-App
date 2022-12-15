@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -14,6 +16,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddProductController implements Initializable {
+    public TableView partToAdd;
+    public TableColumn partIDCol;
+    public TableColumn partNameCol;
+    public TableColumn stockCol;
+    public TableColumn priceCol;
+    public TableView addedPartsList;
+    public TableColumn addedPartIDCol;
+    public TableColumn addedPartNameCol;
+    public TableColumn addedStockCol;
+    public TableColumn addedPriceCol;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

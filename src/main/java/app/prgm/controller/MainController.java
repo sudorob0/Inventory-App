@@ -4,11 +4,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
 
 public class MainController {
+    public TableView partsTable;
+    public TableColumn partID;
+    public TableColumn partName;
+    public TableColumn stock;
+    public TableColumn price;
+    public TextField partSearchBar;
+    public Button partDelete;
+    public Button partModForm;
+    public Button partAdd;
+    public Button exit;
+    public TableView productsTable;
+    public TableColumn prodIDCol;
+    public TableColumn prodNameCol;
+    public TableColumn prodStock;
+    public TableColumn prodPrice;
+
     public void toAddPartScreen(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
         Parent root = loader.load();
