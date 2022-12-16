@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * Creates Product object
+ * class to create product object
  */
 public class Product {
 
@@ -17,9 +17,14 @@ public class Product {
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
 
-
     /**
-     * Constructor
+     * constructor
+     * @param productID
+     * @param productName
+     * @param productPrice
+     * @param productStock
+     * @param min
+     * @param max
      */
     public Product(int productID, String productName, double productPrice, int productStock, int min, int max){
         this.productID = productID;
@@ -31,98 +36,73 @@ public class Product {
     }
 
     /**
-     * Returns ID number
+     * getter for product id
+     * @return
      */
     public int getProductID() {
         return productID;
     }
 
     /**
-     * Set ID number
+     * setter for product id
+     * @param productID
      */
     public void setID(int productID) {
         this.productID = productID;
     }
 
-    /**
-     * Get Product Name
-     */
     public String getProductName() {
         return productName;
     }
 
-    /**
-     * Sets Product Name
-     */
     public void setName(String productName) {
         this.productName = productName;
     }
 
-    /**
-     *Returns Product Price
-     */
     public double getProductPrice() {
         return productPrice;
     }
 
-    /**
-     *Set Product price
-     */
     public void setPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
-    /**
-     *Return Produce Stock
-     */
     public int getProductStock() {
         return productStock;
     }
 
-    /**
-     *Set Product stock level
-     */
     public void setStock(int productStock) {
         this.productStock = productStock;
     }
 
-    /**
-     *Returns minimum stock
-     */
     public int getMin() {
         return min;
     }
 
-    /**
-     *Set Minimum stock
-     */
     public void setMin(int min) {
         this.min = min;
     }
 
-    /**
-     *Return Maximun stock
-     */
     public int getMax() {
         return max;
     }
 
-    /**
-     *Set maximum stock level
-     */
     public void setMax(int max) {
         this.max = max;
     }
 
     /**
-     *Add part to associated part list
+     * Method adds part to an associated parts list
+     * @param part
      */
     public void addAssociatedPart(Part part){
         associatedParts.add(part);
     }
 
     /**
-     *Remove a part from the associate part list
+     * Metod to remove a part form the associated parts list
+     * @param selectedAssociatePart
+     * @return
      */
     public boolean deleteAssociatedPart(Part selectedAssociatePart){
         associatedParts.remove(selectedAssociatePart);
@@ -130,7 +110,8 @@ public class Product {
     }
 
     /**
-     *Return list of associate parts
+     * Returns a list of parts
+     * @return
      */
     public ObservableList<Part> getAllAssociatedParts(){
         return associatedParts;

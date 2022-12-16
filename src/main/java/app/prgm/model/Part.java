@@ -2,7 +2,7 @@ package app.prgm.model;
 
 
 /**
- * Creates a Part Object
+ * cllas for createing a part object
  */
 public abstract class Part {
     private int id;
@@ -21,85 +21,61 @@ public abstract class Part {
     }
 
     /**
-     * Returns ID
+     * getter for id
+     * @return
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets ID
+     * setter for id
+     * @param id
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Returns Name
+     * getter for name
+     * @return
      */
     public String getName() {
         return name;
     }
 
-    /**
-     * Sets Name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Returns Price
-     */
     public double getPrice() {
         return price;
     }
 
-    /**
-     * Sets Price
-     */
     public void setPrice(double price) {
         this.price = price;
     }
 
-    /**
-     * Returns the amount in stock
-     */
     public int getStock() {
         return stock;
     }
 
-    /**
-     * Sets the stock amount
-     */
     public void setStock(int stock) {
         this.stock = stock;
     }
 
-    /**
-     * Returns the minimum amount
-     */
     public int getMin() {
         return min;
     }
 
-    /**
-     * Sets the minimum
-     */
     public void setMin(int min) {
         this.min = min;
     }
 
-    /**
-     * Returns the maximum
-     */
     public int getMax() {
         return max;
     }
 
-    /**
-     * Sets the maximum
-     */
     public void setMax(int max) {
         this.max = max;
     }

@@ -31,6 +31,12 @@ public class AddProductController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    /**
+     * Method takes you back to the main screen
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toMain(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
@@ -45,6 +51,11 @@ public class AddProductController implements Initializable {
 
     public void saveButtonSelected(){}
 
+    /**
+     * Method takes you back to the main screen if you select the cancel button
+     * @param actionEvent
+     * @throws IOException
+     */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();

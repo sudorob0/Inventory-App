@@ -32,6 +32,11 @@ public class ModifyProductController implements Initializable {
 
     public void saveButtonSelected(){}
 
+    /**
+     * This method is to chang ethe scene to the main screeen when the cancel button is selected.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();

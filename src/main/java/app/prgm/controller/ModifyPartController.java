@@ -31,11 +31,19 @@ public class ModifyPartController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method changes the label and prompt text to machine id when the in house radio button is selected
+     * @param actionEvent
+     */
     public void inHouseSelected(ActionEvent actionEvent) {
         inOrOutHouseText.setText("Machine ID");
         inOrOutHouseField.setPromptText("ID #");
     }
 
+    /**
+     * This method changes the label and prompt text to company name when the outsourced radio button is selected
+     * @param actionEvent
+     */
     public void outSourcedSelected(ActionEvent actionEvent) {
         inOrOutHouseText.setText("Company Name");
         inOrOutHouseField.setPromptText("Company Name");
@@ -43,6 +51,11 @@ public class ModifyPartController implements Initializable {
 
     public void saveButtonSelected(){}
 
+    /**
+     * This method is to chang ethe scene to the main screeen when the cancel button is selected.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
