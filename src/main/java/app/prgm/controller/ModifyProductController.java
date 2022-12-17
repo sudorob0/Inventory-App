@@ -18,10 +18,10 @@ public class ModifyProductController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-    public void toMain(ActionEvent actionEvent) throws IOException {
+    public void toMainScreen(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
+        Scene scene = new Scene(root, 1040, 500);
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
@@ -38,13 +38,9 @@ public class ModifyProductController implements Initializable {
      * @throws IOException
      */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
-        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
-        stage.setTitle("Inventory Management System");
-        stage.setScene(scene);
-        stage.show();
+        toMainScreen(actionEvent);
     }
+
     public void searchParts(){}
 }
 

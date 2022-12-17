@@ -1,36 +1,79 @@
 package app.prgm.controller;
 
-import app.prgm.model.Part;
-import app.prgm.model.Product;
-import javafx.beans.Observable;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainController {
+import static app.prgm.model.Inventory.allParts;
+import static app.prgm.model.Inventory.allProducts;
+
+
+public class MainController implements Initializable {
     public TableView partsTable;
-    public TableColumn partID;
-    public TableColumn partName;
-    public TableColumn stock;
-    public TableColumn price;
+    public TableColumn partIdCol;
+    public TableColumn partNameCol;
+    public TableColumn partStockCol;
+    public TableColumn partPriceCol;
     public TextField partSearchBar;
-    public Button partDelete;
-    public Button partModForm;
-    public Button partAdd;
+    public Button partDeleteButton;
+    public Button partModifyButton;
+    public Button partAddButton;
     public Button exit;
     public TableView productsTable;
-    public TableColumn prodIDCol;
+    public TableColumn prodIdCol;
     public TableColumn prodNameCol;
-    public TableColumn prodStock;
-    public TableColumn prodPrice;
+    public TableColumn prodStockCol;
+    public TableColumn prodPriceCol;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        partsTable.setItems(allParts);
+        partIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        partStockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        productsTable.setItems(allProducts);
+        prodIdCol.setCellValueFactory(new PropertyValueFactory<>("productID"));
+        prodNameCol.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        prodStockCol.setCellValueFactory(new PropertyValueFactory<>("productStock"));
+        prodPriceCol.setCellValueFactory(new PropertyValueFactory<>("productPrice"));
+    }
+
+    /**
+     * This method is to help reduce the boiler plate code that is needed to change a scene
+     * @param actionEvent
+     * @param fxmlFile
+     * @param width
+     * @param height
+     * @param screenTitle
+     * @throws IOException
+     */
+     public void changeScene(ActionEvent actionEvent, String fxmlFile, int width, int height, String screenTitle) throws IOException {
+        String path = "/main/resources/app/prgm/";
+        path = path.concat(fxmlFile);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, width, height);
+        stage.setTitle(screenTitle);
+        stage.setScene(scene);
+        stage.show();
+     }
+
 
     /**
      * A method that changes the scene to the add parts screen
@@ -38,13 +81,7 @@ public class MainController {
      * @throws IOException
      */
     public void toAddPartScreen(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 400, 500);
-        stage.setTitle("Add Part");
-        stage.setScene(scene);
-        stage.show();
+        changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Add Part");
     }
 
     public void searchParts() {
@@ -56,17 +93,16 @@ public class MainController {
      * @throws IOException
      */
     public void toModifyPartScreen(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/prgm/ModifyPartScreen.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 400, 500);
-        stage.setTitle("Modify Part");
-        stage.setScene(scene);
-        stage.show();
+        changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Modify Part");
     }
 
-    public void deletePart() {
-    }
+
+     public void deletePart() {
+     //Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+     //if (selectedPart == null)
+     //return;
+     //allParts.remove(selectedPart);
+     }
 
     /**
      * A method that changes the scene to the add product screen
@@ -74,13 +110,7 @@ public class MainController {
      * @throws IOException
      */
     public void toAddProductScreen(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/AddProductScreen.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        stage.setTitle("Add Product");
-        stage.setScene(scene);
-        stage.show();
+        changeScene(actionEvent, "AddProductScreen.fxml", 800, 600, "Add Product");
     }
 
     public void searchProducts() {
@@ -92,13 +122,7 @@ public class MainController {
      * @throws IOException
      */
     public void toModifyProductScreen(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/ModifyProductScreen.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        stage.setTitle("Modify Product");
-        stage.setScene(scene);
-        stage.show();
+        changeScene(actionEvent, "ModifyProductScreen.fxml", 800, 600, "Modify Product");
     }
 
     public void deleteProduct() {

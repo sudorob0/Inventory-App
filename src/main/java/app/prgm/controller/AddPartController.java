@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import app.prgm.controller.MainController;
 
 public class AddPartController implements Initializable {
     public Label inOrOutHouseText;
@@ -27,10 +28,10 @@ public class AddPartController implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void toMain(ActionEvent actionEvent) throws IOException {
+    public void toMainScreen(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
+        Scene scene = new Scene(root, 1040, 500);
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
@@ -56,16 +57,11 @@ public class AddPartController implements Initializable {
     public void saveButtonSelected(){}
 
     /**
-     * This method is to chang ethe scene to the main screeen when the cancel button is selected.
+     * This method is to chang ethe scene to the main screen when the cancel button is selected.
      * @param actionEvent
      * @throws IOException
      */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
-        stage.setTitle("Inventory Management System");
-        stage.setScene(scene);
-        stage.show();
+        toMainScreen(actionEvent);
     }
 }

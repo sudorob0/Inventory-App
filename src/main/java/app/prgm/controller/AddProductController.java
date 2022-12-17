@@ -37,10 +37,10 @@ public class AddProductController implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void toMain(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/AddPartScreen.fxml"));
+    public void toMainScreen(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
+        Scene scene = new Scene(root, 1040, 500);
         stage.setTitle("Inventory Management System");
         stage.setScene(scene);
         stage.show();
@@ -57,12 +57,7 @@ public class AddProductController implements Initializable {
      * @throws IOException
      */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
-        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 999, 500);
-        stage.setTitle("Inventory Management System");
-        stage.setScene(scene);
-        stage.show();
+        toMainScreen(actionEvent);
     }
     public void searchParts(){}
 }

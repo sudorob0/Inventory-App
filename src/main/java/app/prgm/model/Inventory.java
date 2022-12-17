@@ -8,11 +8,11 @@ public class Inventory {
     /**
      * Method creates a list of parts
      */
-    private static ObservableList<Part> allParts = FXCollections.observableArrayList();
+    public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     /**
      * This method creates a list of pruducts
      */
-    private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
     /**
      * This method adds a new part to the parts list

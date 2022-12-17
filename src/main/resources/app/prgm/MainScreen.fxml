@@ -14,8 +14,8 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.prgm.controller.MainController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="509.0" minWidth="400.0" prefWidth="502.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="544.0" minWidth="400.0" prefWidth="498.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="400.0" prefWidth="527.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="544.0" minWidth="400.0" prefWidth="524.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="129.0" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
@@ -37,17 +37,14 @@
             <children>
                 <TableView fx:id="partsTable" prefHeight="344.0" prefWidth="453.0">
                     <columns>
-                        <TableColumn fx:id="partID" prefWidth="72.0" text="Part ID" />
-                        <TableColumn fx:id="partName" prefWidth="92.0" text="Part Name" />
-                        <TableColumn fx:id="stock" minWidth="0.0" prefWidth="103.0" text="Inventory Level" />
-                        <TableColumn fx:id="price" minWidth="0.0" prefWidth="132.0" text="Price/Cost per Unit" />
+                        <TableColumn fx:id="partIdCol" prefWidth="64.0" text="Part ID" />
+                        <TableColumn fx:id="partNameCol" prefWidth="195.0" text="Part Name" />
+                        <TableColumn fx:id="partStockCol" minWidth="0.0" prefWidth="90.0" text="Inventory Level" />
+                        <TableColumn fx:id="partPriceCol" minWidth="0.0" prefWidth="77.0" text="Price per Unit" />
                     </columns>
                     <StackPane.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="30.0" />
                     </StackPane.margin>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
                 </TableView>
                 <Label prefHeight="22.0" prefWidth="65.0" text="Parts" StackPane.alignment="TOP_LEFT">
                     <StackPane.margin>
@@ -61,17 +58,17 @@
                         <Insets right="75.0" top="5.0" />
                     </StackPane.margin>
                 </TextField>
-                <Button fx:id="partDelete" mnemonicParsing="false" onAction="#deletePart" prefHeight="25.0" prefWidth="56.0" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partDeleteButton" mnemonicParsing="false" onAction="#deletePart" prefHeight="25.0" prefWidth="56.0" text="Delete" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="60.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="partModForm" mnemonicParsing="false" onAction="#toModifyPartScreen" prefHeight="25.0" prefWidth="57.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partModifyButton" mnemonicParsing="false" onAction="#toModifyPartScreen" prefHeight="25.0" prefWidth="57.0" text="Modify" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="135.0" />
                     </StackPane.margin>
                 </Button>
-                <Button fx:id="partAdd" mnemonicParsing="false" onAction="#toAddPartScreen" text="Add" StackPane.alignment="BOTTOM_RIGHT">
+                <Button fx:id="partAddButton" mnemonicParsing="false" onAction="#toAddPartScreen" text="Add" StackPane.alignment="BOTTOM_RIGHT">
                     <StackPane.margin>
                         <Insets bottom="10.0" right="200.0" />
                     </StackPane.margin>
@@ -89,17 +86,14 @@
             <children>
                 <TableView fx:id="productsTable" prefHeight="344.0" prefWidth="437.0">
                     <columns>
-                        <TableColumn fx:id="prodIDCol" editable="false" prefWidth="79.0" text="Product ID" />
-                        <TableColumn fx:id="prodNameCol" prefWidth="97.0" text="Product Name" />
-                        <TableColumn fx:id="prodStock" prefWidth="105.0" text="Inventory Level" />
-                        <TableColumn fx:id="prodPrice" prefWidth="115.0" text="Price/Cost per Unit" />
+                        <TableColumn fx:id="prodIdCol" editable="false" prefWidth="67.0" text="Product ID" />
+                        <TableColumn fx:id="prodNameCol" prefWidth="187.0" text="Product Name" />
+                        <TableColumn fx:id="prodStockCol" minWidth="0.0" prefWidth="89.0" text="Inventory Level" />
+                        <TableColumn fx:id="prodPriceCol" text="Price per Unit" />
                     </columns>
                     <StackPane.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="30.0" />
                     </StackPane.margin>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
                 </TableView>
                 <Label text="Products" StackPane.alignment="TOP_LEFT">
                     <StackPane.margin>
