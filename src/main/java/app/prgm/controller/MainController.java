@@ -1,20 +1,20 @@
 package app.prgm.controller;
 
+import app.prgm.model.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import app.prgm.model.Part;
 
 import static app.prgm.model.Inventory.allParts;
 import static app.prgm.model.Inventory.allProducts;
@@ -62,13 +62,12 @@ public class MainController implements Initializable {
      * @param screenTitle
      * @throws IOException
      */
-     public void changeScene(ActionEvent actionEvent, String fxmlFile, int width, int height, String screenTitle) throws IOException {
-        String path = "/main/resources/app/prgm/";
-        path = path.concat(fxmlFile);
+     public void changeScene(ActionEvent actionEvent, String fxmlFile, int sceneWidth, int sceneHeight, String screenTitle) throws IOException {
+        String path = "/main/resources/app/prgm/" + fxmlFile;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, width, height);
+        Scene scene = new Scene(root, sceneWidth, sceneHeight);
         stage.setTitle(screenTitle);
         stage.setScene(scene);
         stage.show();
@@ -96,12 +95,24 @@ public class MainController implements Initializable {
         changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Modify Part");
     }
 
-
+    /**
+     * Method deletes part from all parts list
+     * A warning will pop up if no part is selected
+     * A confirmation window will pop up asking you to confirm if you want to delete a part
+     */
      public void deletePart() {
-     //Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
-     //if (selectedPart == null)
-     //return;
-     //allParts.remove(selectedPart);
+     Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+     if (selectedPart == null) {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+         alert.setContentText("No part selected to delete.");
+         alert.showAndWait();
+         return;
+     }
+     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this part?");
+     Optional<ButtonType> result = alert.showAndWait();
+     if (result.isPresent() && result.get() == ButtonType.OK) {
+             allParts.remove(selectedPart);
+         }
      }
 
     /**
@@ -125,7 +136,24 @@ public class MainController implements Initializable {
         changeScene(actionEvent, "ModifyProductScreen.fxml", 800, 600, "Modify Product");
     }
 
+    /**
+     * Method deletes product from all parts list
+     * A warning will pop up if no product is selected
+     * A confirmation window will pop up asking you to confirm if you want to delete a product
+     */
     public void deleteProduct() {
+        Product selectedProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
+        if (selectedProduct == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("No product selected to delete.");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this product?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            allProducts.remove(selectedProduct);
+        }
     }
 
     /**

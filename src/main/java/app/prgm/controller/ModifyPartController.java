@@ -22,6 +22,12 @@ public class ModifyPartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    /**
+     * This method takes you back to the main scene
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toMainScreen(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
