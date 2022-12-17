@@ -1,6 +1,8 @@
 package app.prgm.controller;
 
+import app.prgm.model.Inventory;
 import app.prgm.model.Product;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -57,8 +59,8 @@ public class MainController implements Initializable {
      * This method is to help reduce the boiler plate code that is needed to change a scene
      * @param actionEvent
      * @param fxmlFile
-     * @param width
-     * @param height
+     * @param sceneWidth
+     * @param sceneHeight
      * @param screenTitle
      * @throws IOException
      */
@@ -83,7 +85,10 @@ public class MainController implements Initializable {
         changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Add Part");
     }
 
-    public void searchParts() {
+    public void searchParts(ActionEvent actionEvent) {
+        String searchText = partSearchBar.getText();
+        ObservableList<Part> partResults = Inventory.lookupPart(searchText);
+        partsTable.setItems(partResults);
     }
 
     /**

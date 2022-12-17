@@ -31,19 +31,22 @@ public class Inventory {
     }
 
     /**
-     * Iterate through list and if id is in list then return the ID
-     * @param partID
+     * Search for a partial text match in the allParts list and return the results.
+     * @param searchText
      * @return
      */
-    public static Part lookupPart(int partID) {
-        for (Part ID : allParts) {
-            if (ID.getId() == partID) {
-                return ID;
+    public static ObservableList<Part> lookupPart(String searchText) {
+        // Make a list of parts to hold search results
+        ObservableList<Part> partSearchResults = FXCollections.observableArrayList();
+        // Iterate through list
+        for(Part tempPart : allParts) {
+            String partName = tempPart.getName().toLowerCase();
+            // Check if search string is in the parts name
+            if(partName.contains(searchText.toLowerCase())) {
+                partSearchResults.add(tempPart);
             }
         }
-        // return null if the ID is not found in the part list
-        return null;
+        return partSearchResults;
     }
-
 
 }

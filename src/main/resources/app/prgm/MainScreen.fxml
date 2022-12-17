@@ -53,7 +53,7 @@
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font></Label>
-                <TextField fx:id="partSearchBar" maxWidth="200.0" minWidth="144.0" onAction="#searchParts" opacity="0.5" prefHeight="25.0" prefWidth="144.0" promptText="Search by Part ID or Name" text="Search by Part ID or Name" StackPane.alignment="TOP_RIGHT">
+                <TextField fx:id="partSearchBar" maxWidth="200.0" minWidth="144.0" onAction="#searchParts" prefHeight="25.0" prefWidth="144.0" promptText="Search by Part ID or Name" StackPane.alignment="TOP_RIGHT">
                     <StackPane.margin>
                         <Insets right="75.0" top="5.0" />
                     </StackPane.margin>
