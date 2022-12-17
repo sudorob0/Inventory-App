@@ -38,6 +38,7 @@ public class MainController implements Initializable {
     public TableColumn prodNameCol;
     public TableColumn prodStockCol;
     public TableColumn prodPriceCol;
+    public TextField productSearchBar;
 
 
     @Override
@@ -85,10 +86,23 @@ public class MainController implements Initializable {
         changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Add Part");
     }
 
+    /**
+     * This method searches for part id and name.
+     * It first checks for part id since you need to have an exact match on the id it is less greedy.
+     * Then if it cant find part id it searches for a partial match on the name.
+     * Exception handling is in the inventory methods being called
+     * @param actionEvent
+     */
     public void searchParts(ActionEvent actionEvent) {
         String searchText = partSearchBar.getText();
-        ObservableList<Part> partResults = Inventory.lookupPart(searchText);
-        partsTable.setItems(partResults);
+        ObservableList<Part> partIdResult = Inventory.lookupPartId(searchText);
+        if (partIdResult == null) {
+            ObservableList<Part> partResults = Inventory.lookupPart(searchText);
+            partsTable.setItems(partResults);
+        } else {
+            partsTable.setItems(partIdResult);
+        }
+
     }
 
     /**
@@ -129,7 +143,23 @@ public class MainController implements Initializable {
         changeScene(actionEvent, "AddProductScreen.fxml", 800, 600, "Add Product");
     }
 
-    public void searchProducts() {
+    /**
+     * This method searches for product id and name.
+     * It first checks for product id since you need to have an exact match on the id it is less greedy.
+     * Then if it cant find product id it searches for a partial match on the name.
+     * Exception handling is in the inventory methods being called
+     * @param actionEvent
+     */
+    public void searchProducts(ActionEvent actionEvent) {
+        String searchText = productSearchBar.getText();
+        ObservableList<Product> productIdResult = Inventory.lookupProductId(searchText);
+        if (productIdResult == null) {
+            ObservableList<Product> productResults = Inventory.lookupProduct(searchText);
+            productsTable.setItems(productResults);
+        } else {
+            productsTable.setItems(productIdResult);
+        }
+
     }
 
     /**
@@ -142,7 +172,7 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Method deletes product from all parts list
+     * Method deletes product from all product list
      * A warning will pop up if no product is selected
      * A confirmation window will pop up asking you to confirm if you want to delete a product
      */

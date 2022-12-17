@@ -31,8 +31,8 @@ public class Main extends Application {
         Inventory.addPart(new Outsourced(4,"Catalyst 9100", 400, 2, 1, 5, "Cisco"));
         Inventory.addPart(new Outsourced(5,"Catalyst 9166", 400, 2, 1, 5, "Cisco"));
         Inventory.addPart(new Outsourced(6,"Catalyst 9105w", 400, 2, 1, 5, "Cisco"));
-        Inventory.addProduct(new Product(1,"720", 1000, 2, 1, 3));
-        Inventory.addProduct(new Product(2,"7050", 3000, 1, 0, 2));
+        Inventory.addProduct(new Product(1,"720XP 48P", 1000, 2, 1, 3));
+        Inventory.addProduct(new Product(2,"7050X3 48P", 3000, 1, 0, 2));
         Inventory.addProduct(new Product(3,"7130B-32QD", 4000, 1, 0, 2));
     }
 
