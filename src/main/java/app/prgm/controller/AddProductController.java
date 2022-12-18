@@ -52,7 +52,7 @@ public class AddProductController implements Initializable {
     public void saveButtonSelected(){}
 
     /**
-     * Method takes you back to the main screen if you select the cancel button
+     * Method takes you back to the main scene if you select the cancel button
      * @param actionEvent
      * @throws IOException
      */

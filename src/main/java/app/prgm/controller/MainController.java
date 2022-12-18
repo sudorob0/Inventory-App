@@ -102,7 +102,6 @@ public class MainController implements Initializable {
         } else {
             partsTable.setItems(partIdResult);
         }
-
     }
 
     /**
@@ -111,7 +110,26 @@ public class MainController implements Initializable {
      * @throws IOException
      */
     public void toModifyPartScreen(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, "AddPartScreen.fxml", 400, 500, "Modify Part");
+        Part selectedPart = (Part) partsTable.getSelectionModel().getSelectedItem();
+        int currentIndex = partsTable.getSelectionModel().getSelectedIndex();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/ModifyPartScreen.fxml"));
+            Parent root = loader.load();
+            ModifyPartController modifyPartController = loader.getController();
+            modifyPartController.partToModify(currentIndex, selectedPart);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 400, 500);
+            stage.setTitle("Modify Part");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (NullPointerException exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("First select a part to modify it.");
+            alert.showAndWait();
+        }
     }
 
     /**

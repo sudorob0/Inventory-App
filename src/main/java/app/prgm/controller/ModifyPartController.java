@@ -1,5 +1,8 @@
 package app.prgm.controller;
 
+import app.prgm.model.InHouse;
+import app.prgm.model.Outsourced;
+import app.prgm.model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -18,9 +22,40 @@ import java.util.ResourceBundle;
 public class ModifyPartController implements Initializable {
     public Label inOrOutHouseText;
     public TextField inOrOutHouseField;
+    public TextField idField;
+    public TextField nameField;
+    public TextField inventoryField;
+    public TextField priceField;
+    public TextField minField;
+    public TextField maxField;
+    public RadioButton outSourcedRadio;
+    public Part selectedPart;
+    public RadioButton inHouseRadio;
+    private int currentIndex = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+    public void partToModify(int currentIndex, Part part) {
+        this.selectedPart = part;
+        this.currentIndex = currentIndex;
+        idField.setText(Integer.toString(selectedPart.getId()));
+        nameField.setText(selectedPart.getName());
+        inventoryField.setText(Integer.toString(selectedPart.getStock()));
+        priceField.setText(Double.toString(selectedPart.getPrice()));
+        maxField.setText(Integer.toString(selectedPart.getMax()));
+        minField.setText(Integer.toString(selectedPart.getMin()));
+        if (part instanceof InHouse) {
+            inOrOutHouseField.setText(Integer.toString(((InHouse) selectedPart).getMachineID()));
+            inHouseRadio.setSelected(true);
+            inOrOutHouseText.setText("Machine ID");
+        }
+        else {
+            inOrOutHouseField.setText(((Outsourced) selectedPart).getCompanyName());
+            outSourcedRadio.setSelected(true);
+            inOrOutHouseText.setText("Company Name");
+        }
     }
 
     /**
