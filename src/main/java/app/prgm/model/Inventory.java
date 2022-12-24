@@ -5,12 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Inventory {
+    private static int partId = 0;
     /**
      * Method creates a list of parts
      */
     public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     /**
-     * This method creates a list of pruducts
+     * This method creates a list of products
      */
     public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
@@ -31,9 +32,18 @@ public class Inventory {
     }
 
     /**
+     * This method generates unique non-overlapping partID numbers.
+     * @return partId
+     */
+    public static int generatePartId() {
+        partId += 1;
+        return partId;
+    }
+
+    /**
      * Search for a partial text match in the allParts list and return the results.
      * @param searchText
-     * @return
+     * @return search results
      */
     public static ObservableList<Part> lookupPart(String searchText) {
         // Make a list of parts to hold search results
@@ -113,5 +123,14 @@ public class Inventory {
             return null;
         }
         return null;
+    }
+
+    /**
+     * Edits one part in the Parts list
+     * @param index
+     * @param selectedPart
+     */
+    public static void editPart(int index, Part selectedPart) {
+        allParts.set(index, selectedPart);
     }
 }
