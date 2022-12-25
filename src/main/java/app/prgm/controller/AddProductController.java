@@ -1,7 +1,6 @@
 package app.prgm.controller;
 
-import app.prgm.model.Inventory;
-import app.prgm.model.Part;
+import app.prgm.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,16 +14,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import static app.prgm.model.Inventory.allParts;
 
+import static app.prgm.model.Inventory.*;
 
 
 public class AddProductController implements Initializable {
     public TableColumn partNameCol;
-    public TableView addedPartsList;
     public TextField idField;
     public TextField nameField;
-    public TextField stockField;
+    public TextField inventoryField;
     public TextField priceField;
     public TextField maxField;
     public TextField minField;
@@ -35,7 +33,7 @@ public class AddProductController implements Initializable {
     public TextField partSearchBar;
     public TableView partsToAddTable;
     public TableColumn partIdCol;
-    public TableColumn partStockCol;
+    public TableColumn partInventoryCol;
     public TableColumn partPriceCol;
     private static ObservableList<Part> associatedPartsList = FXCollections.observableArrayList();
     public TableView associatedPartsTable;
@@ -43,6 +41,8 @@ public class AddProductController implements Initializable {
     public TableColumn associatedPartNameCol;
     public TableColumn associatedInventoryCol;
     public TableColumn associatedPriceCol;
+
+
 
     /**
      * Populate the partsToAddTable with the allParts list
@@ -54,7 +54,7 @@ public class AddProductController implements Initializable {
         partsToAddTable.setItems(allParts);
         partIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        partStockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        partInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         associatedPartsTable.setItems(associatedPartsList);
@@ -121,7 +121,57 @@ public class AddProductController implements Initializable {
         }
     }
 
-    public void saveButtonSelected(){}
+    /**
+     * This method saves the product as an object to the allProducts list
+     * RUNTIME ERROR: If the user inputs an incorrect value then the try catch will inform them
+     * a value is incorrect and show them the error message.
+     * RUNTIME ERROR: If min is grater than max user will get an error message
+     * RUNTIME ERROR: If the current inventory is not within the min and max then the user will get an error.
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void saveButtonSelected(ActionEvent actionEvent) throws IOException {
+        try {
+            int id = generateProductId();
+            String name = nameField.getText();
+            double price = Double.parseDouble(priceField.getText());
+            int inventory = Integer.parseInt(inventoryField.getText());
+            int min = Integer.parseInt(minField.getText());
+            int max = Integer.parseInt(maxField.getText());
+
+            if(max < min) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Max must be greater than Min");
+                alert.showAndWait();
+                return;
+            }
+            else if (min > inventory) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Stock must be greater than them minimum.");
+                alert.showAndWait();
+                return;
+            }
+            else if (max < inventory) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Stock must be less than them maximum.");
+                alert.showAndWait();
+                return;
+            }
+            Product newProduct = new Product(id, name, price, inventory, min, max);
+            for (Part currentParts : associatedPartsList) {
+                newProduct.addAssociatedPart(currentParts);
+            }
+            Inventory.addProduct(newProduct);
+            associatedPartsList.clear();
+            toMainScreen(actionEvent);
+        }
+        catch(NumberFormatException exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Invalid entry\n\n" + exception);
+            alert.showAndWait();
+        }
+    }
 
     /**
      * Method takes you back to the main scene if you select the cancel button
@@ -129,11 +179,13 @@ public class AddProductController implements Initializable {
      * @throws IOException
      */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
+        associatedPartsList.clear();
         toMainScreen(actionEvent);
     }
 
     /**
      * This method allows the user to search by part ID or partial search by name.
+     * It first checks for the full id before checking for the name.
      * @param actionEvent
      */
     public void searchParts(ActionEvent actionEvent) {

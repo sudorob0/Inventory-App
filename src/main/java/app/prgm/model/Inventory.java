@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 public class Inventory {
     private static int partId = 0;
+    private static int productID = 1000;
     /**
      * Method creates a list of parts
      */
@@ -40,6 +41,10 @@ public class Inventory {
         return partId;
     }
 
+    public static int generateProductId() {
+        productID += 1;
+        return productID;
+    }
     /**
      * Search for a partial text match in the allParts list and return the results.
      * @param searchText
