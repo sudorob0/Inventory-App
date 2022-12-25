@@ -1,34 +1,67 @@
 package app.prgm.controller;
 
+import app.prgm.model.Inventory;
+import app.prgm.model.Part;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static app.prgm.model.Inventory.allParts;
+
+
 
 public class AddProductController implements Initializable {
-    public TableView partToAdd;
-    public TableColumn partIDCol;
     public TableColumn partNameCol;
-    public TableColumn stockCol;
-    public TableColumn priceCol;
     public TableView addedPartsList;
-    public TableColumn addedPartIDCol;
-    public TableColumn addedPartNameCol;
-    public TableColumn addedStockCol;
-    public TableColumn addedPriceCol;
+    public TextField idField;
+    public TextField nameField;
+    public TextField stockField;
+    public TextField priceField;
+    public TextField maxField;
+    public TextField minField;
+    public Button addAssocPart;
+    public Button removeAssocPart;
+    public Button saveButton;
+    public Button cancelButton;
+    public TextField partSearchBar;
+    public TableView partsToAddTable;
+    public TableColumn partIdCol;
+    public TableColumn partStockCol;
+    public TableColumn partPriceCol;
+    private static ObservableList<Part> associatedPartsList = FXCollections.observableArrayList();
+    public TableView associatedPartsTable;
+    public TableColumn associatedPartIDCol;
+    public TableColumn associatedPartNameCol;
+    public TableColumn associatedInventoryCol;
+    public TableColumn associatedPriceCol;
 
+    /**
+     * Populate the partsToAddTable with the allParts list
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        partsToAddTable.setItems(allParts);
+        partIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        partStockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        associatedPartsTable.setItems(associatedPartsList);
+        associatedPartIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        associatedInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        associatedPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
     }
 
@@ -45,9 +78,48 @@ public class AddProductController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void addButtonSelected(){}
 
-    public void removeButtonSelected(){}
+    /**
+     * This method adds a part to the products list
+     *
+     * RUNTIME ERROR: If no part is selected a notification will pop up to
+     * inform the user that they need to select a part first.
+     * @param actionEvent
+     */
+    public void addButtonSelected(ActionEvent actionEvent){
+        Part selectedPart = (Part) partsToAddTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("First select a part to add");
+            alert.showAndWait();
+        }
+        else {
+            associatedPartsList.add(selectedPart);
+            associatedPartsTable.setItems(associatedPartsList);
+        }
+    }
+
+    /**
+     * Remove an associated part from the product.
+     *
+     * RUNTIME ERROR: If no part is selected a notification will pop up to
+     * inform the user that they need to select a part first.
+     * @param actionEvent
+     */
+    public void removeButtonSelected(ActionEvent actionEvent){
+        Part selectedPartToRemove = (Part) associatedPartsTable.getSelectionModel().getSelectedItem();
+
+        if (selectedPartToRemove == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("First select a part to remove");
+            alert.showAndWait();
+        }
+        else {
+            associatedPartsList.remove(selectedPartToRemove);
+            associatedPartsTable.setItems(associatedPartsList);
+        }
+    }
 
     public void saveButtonSelected(){}
 
@@ -59,5 +131,19 @@ public class AddProductController implements Initializable {
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
         toMainScreen(actionEvent);
     }
-    public void searchParts(){}
+
+    /**
+     * This method allows the user to search by part ID or partial search by name.
+     * @param actionEvent
+     */
+    public void searchParts(ActionEvent actionEvent) {
+        String searchText = partSearchBar.getText();
+        ObservableList<Part> partIdResult = Inventory.lookupPartId(searchText);
+        if (partIdResult == null) {
+            ObservableList<Part> partResults = Inventory.lookupPart(searchText);
+            partsToAddTable.setItems(partResults);
+        } else {
+            partsToAddTable.setItems(partIdResult);
+        }
+    }
 }

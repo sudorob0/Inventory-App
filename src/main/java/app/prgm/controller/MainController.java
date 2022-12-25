@@ -57,7 +57,7 @@ public class MainController implements Initializable {
     }
 
     /**
-     * This method is to help reduce the boiler plate code that is needed to change a scene
+     * This method is to help reduce the boilerplate code that is needed to change a scene
      * @param actionEvent
      * @param fxmlFile
      * @param sceneWidth
