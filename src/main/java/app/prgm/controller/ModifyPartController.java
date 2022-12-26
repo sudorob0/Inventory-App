@@ -129,7 +129,7 @@ public class ModifyPartController implements Initializable {
             }
             if (inHouseRadio.isSelected()) {
                 int machineID = Integer.parseInt(inOrOutHouseField.getText());
-                Part modifiedPart = new InHouse(id,name, price, inventory, min, max, machineID);
+                Part modifiedPart = new InHouse(id, name, price, inventory, min, max, machineID);
                 Inventory.editPart(currentIndex, modifiedPart);
             } else {
                 String companyName = inOrOutHouseField.getText();

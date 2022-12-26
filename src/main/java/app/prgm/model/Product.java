@@ -18,7 +18,7 @@ public class Product {
 
 
     /**
-     * constructor
+     * constructor for product objects
      * @param productID
      * @param productName
      * @param productPrice
@@ -100,7 +100,7 @@ public class Product {
     }
 
     /**
-     * Metod to remove a part form the associated parts list
+     * Method to remove a part form the associated parts list
      * @param selectedAssociatePart
      * @return
      */

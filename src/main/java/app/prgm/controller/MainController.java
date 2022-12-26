@@ -186,7 +186,26 @@ public class MainController implements Initializable {
      * @throws IOException
      */
     public void toModifyProductScreen(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, "ModifyProductScreen.fxml", 800, 600, "Modify Product");
+        Product selectedProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
+        int currentIndex = productsTable.getSelectionModel().getSelectedIndex();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/ModifyProductScreen.fxml"));
+            Parent root = loader.load();
+            ModifyProductController modifyProductController = loader.getController();
+            modifyProductController.productToModify(currentIndex, selectedProduct);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 800, 600);
+            stage.setTitle("Modify Product");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (NullPointerException exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("First select a product to modify it.");
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -194,7 +213,7 @@ public class MainController implements Initializable {
      * A warning will pop up if no product is selected
      * A confirmation window will pop up asking you to confirm if you want to delete a product
      */
-    public void deleteProduct() {
+    public void deleteProduct(ActionEvent actionEvent) {
         Product selectedProduct = (Product) productsTable.getSelectionModel().getSelectedItem();
         if (selectedProduct == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

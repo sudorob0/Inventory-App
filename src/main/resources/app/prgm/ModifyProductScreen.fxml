@@ -53,6 +53,6 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-      <TextField fx:id="idfield" editable="false" layoutX="106.0" layoutY="125.0" prefHeight="26.0" prefWidth="150.0" promptText="ID #" />
+      <TextField fx:id="idField" editable="false" layoutX="106.0" layoutY="125.0" prefHeight="26.0" prefWidth="150.0" promptText="ID #" />
     </children>
 </AnchorPane>
