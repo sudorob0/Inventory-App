@@ -23,16 +23,14 @@ public class Outsourced extends Part {
     }
 
     /**
-     * getter for company name (string)
-     * @return
+     * @return company name (string)
      */
     public String getCompanyName() {
         return companyName;
     }
 
     /**
-     * setter for company name (string)
-     * @param companyName
+     * @param companyName company name (string)
      */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;

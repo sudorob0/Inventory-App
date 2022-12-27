@@ -35,7 +35,7 @@ public class Inventory {
 
     /**
      * This method generates unique non-overlapping partID numbers.
-     * FUTURE ENHANCEMENT: Iterate through the part IDs and find the highest number. Then add a 1 to that number
+     * FUTURE ENHANCEMENT: Iterate through the part IDs and find the highest number, then add a 1 to that number
      * @return partId
      */
     public static int generatePartId() {
@@ -44,7 +44,7 @@ public class Inventory {
     }
     /**
      * This method generates unique non-overlapping productID numbers.
-     * FUTURE ENHANCEMENT: Iterate through the part IDs and find the highest number. Then add a 1 to that number
+     * FUTURE ENHANCEMENT: Iterate through the product IDs and find the highest number, then add a 1 to that number
      * @return partId
      */
     public static int generateProductId() {
@@ -75,8 +75,8 @@ public class Inventory {
      * If the input string can be converted to an integer then it iterates through the inventory list
      * and returns once it finds an exact match.
      * If the input string cant be converted to an integer then the catch will return null.
-     * @param partId
-     * @return
+     * @param partId a number for the partId
+     * @return results
      */
     public static ObservableList<Part> lookupPartId(String partId) {
         ObservableList<Part> partIdResult = FXCollections.observableArrayList();
@@ -95,8 +95,8 @@ public class Inventory {
     }
     /**
      * Search for a partial text match in the allParts list and return the results.
-     * @param searchText
-     * @return
+     * @param searchText any string
+     * @return search results
      */
     public static ObservableList<Product> lookupProduct(String searchText) {
         // Make a list of parts to hold search results
