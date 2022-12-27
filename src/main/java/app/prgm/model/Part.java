@@ -1,8 +1,11 @@
 package app.prgm.model;
-
+/**
+ * Supplied class Part.java
+ */
 
 /**
- * constructor for creating a part object
+ *
+ * @author Robert Uhl
  */
 public abstract class Part {
     private int id;
@@ -22,99 +25,86 @@ public abstract class Part {
     }
 
     /**
-     * getter for id
-     * @return
+     * @return the id
      */
     public int getId() {
         return id;
     }
 
     /**
-     * setter for id
-     * @param id
+     * @param id the id to set
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * getter for part name
-     * @return
+     * @return the name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Setter for part name
-     * @param name
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * getter for part price
-     * @return
+     * @return the price
      */
     public double getPrice() {
         return price;
     }
 
     /**
-     * setter for part price
-     * @param price
+     * @param price the price to set
      */
     public void setPrice(double price) {
         this.price = price;
     }
 
     /**
-     * getter for part stock
-     * @return
+     * @return the stock
      */
     public int getStock() {
         return stock;
     }
 
     /**
-     * setter for part stock
-     * @param stock
+     * @param stock the stock to set
      */
     public void setStock(int stock) {
         this.stock = stock;
     }
 
     /**
-     * getter for part min inventory
-     * @return
+     * @return the min
      */
     public int getMin() {
         return min;
     }
 
     /**
-     * setter for min stock
-     * @param min
+     * @param min the min to set
      */
     public void setMin(int min) {
         this.min = min;
     }
 
     /**
-     * getter for max stock
-     * @return
+     * @return the max
      */
     public int getMax() {
         return max;
     }
 
     /**
-     * setter for max stock
-     * @param max
+     * @param max the max to set
      */
     public void setMax(int max) {
         this.max = max;
     }
-
 }

@@ -7,15 +7,16 @@ import app.prgm.model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static app.prgm.model.Inventory.allParts;
+import static app.prgm.model.Inventory.allProducts;
 
 public class ModifyPartController implements Initializable {
     public Label inOrOutHouseText;
@@ -37,6 +38,12 @@ public class ModifyPartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    /**
+     * This method takes the part that was selected in the main screen and adds its attributes in the corresponding text box.
+     * @param currentIndex
+     * @param part
+     */
     public void partToModify(int currentIndex, Part part) {
         this.selectedPart = part;
         this.currentIndex = currentIndex;
@@ -91,15 +98,23 @@ public class ModifyPartController implements Initializable {
     }
 
     /**
-     * This method is to chang ethe scene to the main screen when the cancel button is selected.
-     *
-     *
+     * This method is to change the scene to the main screen when the cancel button is selected.
      * @param actionEvent
      * @throws IOException
      */
     public void cancelButtonSelected(ActionEvent actionEvent) throws IOException {
         toMainScreen(actionEvent);
     }
+
+    /**
+     * This method saves the new modified part as an object to the allParts list and delete the old object.
+     * RUNTIME ERROR: If the user inputs an incorrect value then the try catch will inform them
+     * a value is incorrect and show them the error message.
+     * RUNTIME ERROR: If min is grater than max user will get an error message
+     * RUNTIME ERROR: If the current inventory is not within the min and max then the user will get an error.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void saveButtonSelected(ActionEvent actionEvent) throws IOException {
         try {
             int id = Integer.parseInt(idField.getText());
@@ -130,12 +145,13 @@ public class ModifyPartController implements Initializable {
             if (inHouseRadio.isSelected()) {
                 int machineID = Integer.parseInt(inOrOutHouseField.getText());
                 Part modifiedPart = new InHouse(id, name, price, inventory, min, max, machineID);
-                Inventory.editPart(currentIndex, modifiedPart);
+                Inventory.addPart(modifiedPart);
             } else {
                 String companyName = inOrOutHouseField.getText();
                 Part modifiedPart = new Outsourced(id, name, price, inventory, min, max, companyName);
-                Inventory.editPart(currentIndex, modifiedPart);
+                Inventory.addPart(modifiedPart);
             }
+            allParts.remove(selectedPart);
             toMainScreen(actionEvent);
         }
         catch(NumberFormatException exception) {

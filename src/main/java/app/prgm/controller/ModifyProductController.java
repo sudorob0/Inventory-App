@@ -13,11 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static app.prgm.model.Inventory.allParts;
 import static app.prgm.model.Inventory.allProducts;
 
@@ -47,7 +45,11 @@ public class ModifyProductController implements Initializable {
     private Product selectedProduct;
     private int currentIndex;
 
-
+    /**
+     * Initialize populates the tables with part objects
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsToAddTable.setItems(allParts);
@@ -63,6 +65,12 @@ public class ModifyProductController implements Initializable {
         associatedPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
+    /**
+     * This method takes the product that was selected on the main screen and populates the text fields
+     * with the attributes for that product. Its also updates the associatedPartsTable with the associatedPartsList.
+     * @param currentIndex
+     * @param product
+     */
     public void productToModify(int currentIndex, Product product) {
         this.selectedProduct = product;
         this.currentIndex = currentIndex;
@@ -111,8 +119,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * Remove an associated part from the product.
-     *
+     * This method removes an associated part from the product.
      * RUNTIME ERROR: If no part is selected a notification will pop up to
      * inform the user that they need to select a part first.
      * @param actionEvent
@@ -194,7 +201,6 @@ public class ModifyProductController implements Initializable {
             int inventory = Integer.parseInt(inventoryField.getText());
             int min = Integer.parseInt(minField.getText());
             int max = Integer.parseInt(maxField.getText());
-            allProducts.remove(selectedProduct);
 
             if(max < min) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -214,11 +220,13 @@ public class ModifyProductController implements Initializable {
                 alert.showAndWait();
                 return;
             }
+
             Product newProduct = new Product(id, name, price, inventory, min, max);
             for (Part currentParts : associatedPartsList) {
                 newProduct.addAssociatedPart(currentParts);
             }
             Inventory.addProduct(newProduct);
+            allProducts.remove(selectedProduct);
             toMainScreen(actionEvent);
         }
         catch(NumberFormatException exception) {

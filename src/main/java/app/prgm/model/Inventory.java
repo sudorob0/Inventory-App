@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Inventory {
+    // start numbering the partIds at 1 and the productIds at 1001
     private static int partId = 0;
     private static int productID = 1000;
     /**
@@ -17,7 +18,7 @@ public class Inventory {
     public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
     /**
-     * This method adds a new part to the parts list
+     * This method adds a new part object to the parts list
      * @param newPart
      */
     public static void addPart(Part newPart) {
@@ -25,7 +26,7 @@ public class Inventory {
     }
 
     /**
-     * Adds a new Product to allProducts list
+     * Adds a new Product object to allProducts list
      * @param newProduct
      */
     public static void addProduct(Product newProduct) {
@@ -34,13 +35,18 @@ public class Inventory {
 
     /**
      * This method generates unique non-overlapping partID numbers.
+     * FUTURE ENHANCEMENT: Iterate through the part IDs and find the highest number. Then add a 1 to that number
      * @return partId
      */
     public static int generatePartId() {
         partId += 1;
         return partId;
     }
-
+    /**
+     * This method generates unique non-overlapping productID numbers.
+     * FUTURE ENHANCEMENT: Iterate through the part IDs and find the highest number. Then add a 1 to that number
+     * @return partId
+     */
     public static int generateProductId() {
         productID += 1;
         return productID;
@@ -128,14 +134,5 @@ public class Inventory {
             return null;
         }
         return null;
-    }
-
-    /**
-     * Edits one part in the Parts list
-     * @param index
-     * @param selectedPart
-     */
-    public static void editPart(int index, Part selectedPart) {
-        allParts.set(index, selectedPart);
     }
 }
