@@ -12,8 +12,8 @@ public class Product {
     private String productName;
     private double productPrice;
     private int productStock;
-    private int min;
-    private int max;
+    private int productMin;
+    private int productMax;
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
 
@@ -23,16 +23,16 @@ public class Product {
      * @param productName
      * @param productPrice
      * @param productStock
-     * @param min
-     * @param max
+     * @param productMin
+     * @param productMax
      */
-    public Product(int productID, String productName, double productPrice, int productStock, int min, int max){
+    public Product(int productID, String productName, double productPrice, int productStock, int productMin, int productMax){
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productStock = productStock;
-        this.min = min;
-        this.max = max;
+        this.productMin = productMin;
+        this.productMax = productMax;
     }
 
     /**
@@ -47,15 +47,19 @@ public class Product {
      * setter for product id
      * @param productID
      */
-    public void setID(int productID) {
+    public void setProductId(int productID) {
         this.productID = productID;
     }
 
+    /**
+     * getter for product name
+     * @return
+     */
     public String getProductName() {
         return productName;
     }
 
-    public void setName(String productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
@@ -63,7 +67,7 @@ public class Product {
         return productPrice;
     }
 
-    public void setPrice(double productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -71,24 +75,24 @@ public class Product {
         return productStock;
     }
 
-    public void setStock(int productStock) {
+    public void setProductStock(int productStock) {
         this.productStock = productStock;
     }
 
-    public int getMin() {
-        return min;
+    public int getProductMin() {
+        return productMin;
     }
 
-    public void setMin(int min) {
-        this.min = min;
+    public void setProductMin(int productMin) {
+        this.productMin = productMin;
     }
 
-    public int getMax() {
-        return max;
+    public int getProductMax() {
+        return productMax;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    public void setProductMax(int productMax) {
+        this.productMax = productMax;
     }
 
     /**

@@ -7,7 +7,6 @@ import app.prgm.model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,10 +15,11 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import app.prgm.controller.MainController;
-
 import static app.prgm.model.Inventory.generatePartId;
 
+/**
+ * Initializes the AddPartController
+ */
 public class AddPartController implements Initializable {
     public Label inOrOutHouseText;
     public TextField inOrOutHouseField;
@@ -74,9 +74,11 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * I was getting an error when I tried adding a part. In order to find the error I put a print statement in the catch
-     * to print the error. This is the error java.lang.NumberFormatException: For input string: "Auto Generated".
-     * I guess I forgot to autogenerate an id.
+     * This method saves the part to the allParts list and changes the scene to the main screen.
+     * RUNTIME ERROR: If an invalid entry is entered the catch will display an error
+     * RUNTIME ERROR: If the inventory max is less than the min throw an error.
+     * RUNTIME ERROR: If the current inventory is more than max or less than min throw an error.
+     * FUTURE ENHANCEMENT: Type a specific error message for each text box's invalid entry error window.
      * @param actionEvent
      * @throws IOException
      */
@@ -127,7 +129,7 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * This method is to chang ethe scene to the main screen when the cancel button is selected.
+     * This method is to change the scene to the main screen when the cancel button is selected.
      * @param actionEvent
      * @throws IOException
      */

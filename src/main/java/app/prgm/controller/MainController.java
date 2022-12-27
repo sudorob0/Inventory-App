@@ -40,7 +40,11 @@ public class MainController implements Initializable {
     public TableColumn prodPriceCol;
     public TextField productSearchBar;
 
-
+    /**
+     * This populates the tables with the parts and products.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTable.setItems(allParts);
@@ -76,7 +80,6 @@ public class MainController implements Initializable {
         stage.show();
      }
 
-
     /**
      * A method that changes the scene to the add parts screen
      * @param actionEvent
@@ -91,16 +94,34 @@ public class MainController implements Initializable {
      * It first checks for part id since you need to have an exact match on the id it is less greedy.
      * Then if it cant find part id it searches for a partial match on the name.
      * Exception handling is in the inventory methods being called
+     * RUNTIME ERROR: If no parts are found then the else statement will create an error for the catch to hit and
+     * show an error message
+     * FUTURE ENHANCEMENT: Allow searching by other criteria like machineID or company name
+     * FUTURE ENHANCEMENT: Allow for filtering for the price and inventory
      * @param actionEvent
      */
     public void searchParts(ActionEvent actionEvent) {
         String searchText = partSearchBar.getText();
         ObservableList<Part> partIdResult = Inventory.lookupPartId(searchText);
-        if (partIdResult == null) {
-            ObservableList<Part> partResults = Inventory.lookupPart(searchText);
-            partsTable.setItems(partResults);
-        } else {
-            partsTable.setItems(partIdResult);
+        ObservableList<Part> partResults = Inventory.lookupPart(searchText);
+        try {
+            // if search found an id
+            if (partIdResult != null) {
+                partsTable.setItems(partIdResult);
+                // if search found a partial name match
+            } else if (partResults.size() != 0) {
+                partsTable.setItems(partResults);
+                // if the search doesn't find anything
+            } else {
+                partIdResult.size();
+            }
+        }
+        catch (Exception exception){
+            partsTable.setItems(null);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("No Parts found.");
+            alert.showAndWait();
         }
     }
 
@@ -166,22 +187,42 @@ public class MainController implements Initializable {
      * It first checks for product id since you need to have an exact match on the id it is less greedy.
      * Then if it cant find product id it searches for a partial match on the name.
      * Exception handling is in the inventory methods being called
+     * RUNTIME ERROR: If no parts are found then the else statement will create an error for the catch to hit and
+     * show an error message
+     * FUTURE ENHANCEMENT: Allow searching by other criteria like machineID or company name
+     * FUTURE ENHANCEMENT: Allow for filtering for the price and inventory
      * @param actionEvent
      */
     public void searchProducts(ActionEvent actionEvent) {
         String searchText = productSearchBar.getText();
         ObservableList<Product> productIdResult = Inventory.lookupProductId(searchText);
-        if (productIdResult == null) {
-            ObservableList<Product> productResults = Inventory.lookupProduct(searchText);
-            productsTable.setItems(productResults);
-        } else {
-            productsTable.setItems(productIdResult);
+        ObservableList<Product> productResults = Inventory.lookupProduct(searchText);
+        System.out.println(productIdResult);
+        System.out.println(productResults);
+        try {
+            // if search found an id
+            if (productIdResult != null) {
+                productsTable.setItems(productIdResult);
+            // if search found a partial name match
+            } else if (productResults.size() != 0) {
+                productsTable.setItems(productResults);
+            // if the search doesn't find anything
+            } else {
+                productIdResult.size();
+            }
         }
-
+        catch (Exception exception){
+            productsTable.setItems(null);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("No Products found.");
+            alert.showAndWait();
+        }
     }
 
     /**
      * Method that changes the scene to the modify product scene
+     * RUNTIME ERROR: If no product is selected then an error will populate telling the user to select a product first.
      * @param actionEvent
      * @throws IOException
      */
@@ -209,8 +250,8 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Method deletes product from all product list
-     * A warning will pop up if no product is selected
+     * Method deletes product from the allProducts list
+     * RUNTIME ERROR: A warning will pop up if no product is selected
      * A confirmation window will pop up asking you to confirm if you want to delete a product
      */
     public void deleteProduct(ActionEvent actionEvent) {

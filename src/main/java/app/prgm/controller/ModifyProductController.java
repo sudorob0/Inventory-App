@@ -71,8 +71,8 @@ public class ModifyProductController implements Initializable {
         nameField.setText(selectedProduct.getProductName());
         inventoryField.setText(Integer.toString(selectedProduct.getProductStock()));
         priceField.setText(Double.toString((selectedProduct.getProductPrice())));
-        maxField.setText(Integer.toString(selectedProduct.getMax()));
-        minField.setText(Integer.toString(selectedProduct.getMin()));
+        maxField.setText(Integer.toString(selectedProduct.getProductMax()));
+        minField.setText(Integer.toString(selectedProduct.getProductMin()));
 
         associatedPartsList.clear();
 
@@ -141,14 +141,39 @@ public class ModifyProductController implements Initializable {
         toMainScreen(actionEvent);
     }
 
+    /**
+     * This method searches for part id and name.
+     * It first checks for part id since you need to have an exact match on the id it is less greedy.
+     * Then if it cant find part id it searches for a partial match on the name.
+     * Exception handling is in the inventory methods being called
+     * RUNTIME ERROR: If no parts are found then the else statement will create an error for the catch to hit and
+     * show an error message
+     * FUTURE ENHANCEMENT: Allow searching by other criteria like machineID or company name
+     * FUTURE ENHANCEMENT: Allow for filtering for the price and inventory
+     * @param actionEvent
+     */
     public void searchParts(ActionEvent actionEvent) {
         String searchText = partSearchBar.getText();
         ObservableList<Part> partIdResult = Inventory.lookupPartId(searchText);
-        if (partIdResult == null) {
-            ObservableList<Part> partResults = Inventory.lookupPart(searchText);
-            partsToAddTable.setItems(partResults);
-        } else {
-            partsToAddTable.setItems(partIdResult);
+        ObservableList<Part> partResults = Inventory.lookupPart(searchText);
+        try {
+            // if search found an id
+            if (partIdResult != null) {
+                partsToAddTable.setItems(partIdResult);
+                // if search found a partial name match
+            } else if (partResults.size() != 0) {
+                partsToAddTable.setItems(partResults);
+                // if the search doesn't find anything
+            } else {
+                partIdResult.size();
+            }
+        }
+        catch (Exception exception){
+            partsToAddTable.setItems(null);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("No Parts found.");
+            alert.showAndWait();
         }
     }
 
