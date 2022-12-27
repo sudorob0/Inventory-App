@@ -75,7 +75,7 @@ public class AddPartController implements Initializable {
 
     /**
      * This method saves the part to the allParts list and changes the scene to the main screen.
-     * RUNTIME ERROR: If an invalid entry is entered the catch will display an error
+     * RUNTIME ERROR: If an invalid entry is entered the catch will display an error.
      * RUNTIME ERROR: If the inventory max is less than the min throw an error.
      * RUNTIME ERROR: If the current inventory is more than max or less than min throw an error.
      * FUTURE ENHANCEMENT: Type a specific error message for each text box's invalid entry error window.

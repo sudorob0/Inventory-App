@@ -104,6 +104,12 @@ public class ModifyProductController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * This method adds the selected part object from the partsToAddTable to the associatedPartsList
+     * RUNTIME ERROR: If no part is selected an error message wll tell the user to select a part.
+     * @param actionEvent
+     */
     public void addButtonSelected(ActionEvent actionEvent){
         Part selectedPart = (Part) partsToAddTable.getSelectionModel().getSelectedItem();
 
@@ -139,7 +145,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * This method is to chang ethe scene to the main screen when the cancel button is selected.
+     * This method is to change the scene to the main screen when the cancel button is selected.
      * @param actionEvent
      * @throws IOException
      */

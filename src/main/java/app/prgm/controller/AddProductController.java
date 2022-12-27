@@ -44,7 +44,7 @@ public class AddProductController implements Initializable {
 
 
     /**
-     * Populate the partsToAddTable with the allParts list
+     * Populate the partsToAddTable with the allParts list and the associatedPartsTable with the current associatedPartsList.
      * @param url
      * @param resourceBundle
      */
@@ -79,7 +79,7 @@ public class AddProductController implements Initializable {
     }
 
     /**
-     * This method adds a part to the products list
+     * This method adds a selected part object to the products list
      *
      * RUNTIME ERROR: If no part is selected a notification will pop up to
      * inform the user that they need to select a part first.
@@ -100,8 +100,7 @@ public class AddProductController implements Initializable {
     }
 
     /**
-     * Remove an associated part from the product.
-     *
+     * Remove an associated part from the associatedParts list.
      * RUNTIME ERROR: If no part is selected a notification will pop up to
      * inform the user that they need to select a part first.
      * @param actionEvent

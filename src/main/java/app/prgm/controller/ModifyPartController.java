@@ -108,7 +108,7 @@ public class ModifyPartController implements Initializable {
 
     /**
      * This method saves the new modified part as an object to the allParts list and delete the old object.
-     * RUNTIME ERROR: If the user inputs an incorrect value then the try catch will inform them
+     * RUNTIME ERROR: If the user inputs an incorrect value then the try/catch will inform them
      * a value is incorrect and show them the error message.
      * RUNTIME ERROR: If min is grater than max user will get an error message
      * RUNTIME ERROR: If the current inventory is not within the min and max then the user will get an error.
