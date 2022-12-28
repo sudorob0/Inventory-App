@@ -70,7 +70,7 @@ public class AddProductController implements Initializable {
      * @throws IOException
      */
     public void toMainScreen(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/app/prgm/MainScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/app/prgm/MainScreen.fxml"));
         Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1040, 500);
         stage.setTitle("Inventory Management System");

@@ -70,7 +70,7 @@ public class MainController implements Initializable {
      * @throws IOException
      */
      public void changeScene(ActionEvent actionEvent, String fxmlFile, int sceneWidth, int sceneHeight, String screenTitle) throws IOException {
-        String path = "/main/resources/app/prgm/" + fxmlFile;
+        String path = "/app/prgm/" + fxmlFile;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -127,6 +127,8 @@ public class MainController implements Initializable {
 
     /**
      * This method changes the scene to the modify parts screen
+     * RUNTIME ERROR: If no part is selected when the modify button is pressed then the user will be informed they
+     * need to select a part to proceed.
      * @param actionEvent
      * @throws IOException
      */
@@ -135,7 +137,7 @@ public class MainController implements Initializable {
         int currentIndex = partsTable.getSelectionModel().getSelectedIndex();
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/ModifyPartScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/prgm/ModifyPartScreen.fxml"));
             Parent root = loader.load();
             ModifyPartController modifyPartController = loader.getController();
             modifyPartController.partToModify(currentIndex, selectedPart);
@@ -155,7 +157,7 @@ public class MainController implements Initializable {
 
     /**
      * Method deletes part from all parts list
-     * A warning will pop up if no part is selected
+     * RUNTIME ERROR: A warning will pop up if no part is selected
      * A confirmation window will pop up asking you to confirm if you want to delete a part
      */
      public void deletePart() {
@@ -231,7 +233,7 @@ public class MainController implements Initializable {
         int currentIndex = productsTable.getSelectionModel().getSelectedIndex();
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/app/prgm/ModifyProductScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/prgm/ModifyProductScreen.fxml"));
             Parent root = loader.load();
             ModifyProductController modifyProductController = loader.getController();
             modifyProductController.productToModify(currentIndex, selectedProduct);

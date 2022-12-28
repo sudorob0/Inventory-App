@@ -16,8 +16,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static app.prgm.model.Inventory.allParts;
-import static app.prgm.model.Inventory.allProducts;
-
 public class ModifyPartController implements Initializable {
     public Label inOrOutHouseText;
     public TextField inOrOutHouseField;
